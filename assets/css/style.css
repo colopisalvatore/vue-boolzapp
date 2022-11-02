@@ -205,6 +205,7 @@ box-sizing: border-box;
 
 /* hide scrollbar */
 
+.chat-bg::-webkit-scrollbar,
 .contacts-list-container::-webkit-scrollbar {
     display: none;
 }

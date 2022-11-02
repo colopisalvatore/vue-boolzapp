@@ -186,5 +186,9 @@ createApp({
             return this.contacts[index].messages[lastMessage].date;
         },
 
+        changeChat: function(index) {
+            this.currentIndex = index
+        },
+
     },
 }).mount('#app')
