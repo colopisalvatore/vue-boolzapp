@@ -6,7 +6,6 @@ createApp({
             newTask: '',
             notify: true,
             currentIndex: 0,
-            temporaryMex: '',
             searchName: '',
 
             contacts: [
@@ -180,6 +179,11 @@ createApp({
 
         notifySwitch: function(){
             this.notify = !this.notify
+        },
+
+        getLastAccess: function(index) {  
+            let lastMessage = this.contacts[index].messages.length -1;
+            return this.contacts[index].messages[lastMessage].date;
         },
 
     },
