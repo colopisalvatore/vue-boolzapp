@@ -4,6 +4,8 @@ createApp({
     data() {
         return{
             newTask: '',
+            notify: true,
+
             contacts: [
                 {
                     name: 'Michele',
@@ -166,11 +168,16 @@ createApp({
                         }
                     ],
                 }
-            ]
+            ],
         }
+        
     }, 
 
     methods: {
+
+        notifySwitch: function(){
+            this.notify = !this.notify
+        },
 		
     },
 }).mount('#app')
