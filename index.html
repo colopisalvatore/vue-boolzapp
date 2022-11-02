@@ -73,12 +73,12 @@
                 </section>
                 <!-- lista dei contatti -->
                 <section class="contacts-list-container overflow-auto me-3 border-end">
-                    <div class="contact-container py-2">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div class="d-flex align-items-center">
-                                <img class="avatar-image" src="./assets/img/avatar_1.jpg" alt="" />
+                    <div v-for="(contact, i) in contacts" class="contact-container" class="contact-container py-2">
+                        <div v-if="contact.name.toLowerCase().includes(searchName)" :class="{'selected-contact': currentIndex === i}"  class="d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center py-2">
+                                <img class="avatar-image" :src="['./assets/img/avatar' + contact.avatar + '.jpg']"alt="" />
                                 <div>
-                                    <div class="fw-bold ms-1">Nome Contatto</div>
+                                    <div class="fw-bold ms-1">{{contact.name}}</div>
                                     <div class="small-text-size ms-1">Ultimo messaggio inviato</div>
                                 </div>
                             </div>

@@ -5,6 +5,9 @@ createApp({
         return{
             newTask: '',
             notify: true,
+            currentIndex: 0,
+            temporaryMex: '',
+            searchName: '',
 
             contacts: [
                 {
@@ -178,6 +181,6 @@ createApp({
         notifySwitch: function(){
             this.notify = !this.notify
         },
-		
+
     },
 }).mount('#app')
