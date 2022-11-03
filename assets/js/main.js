@@ -7,6 +7,7 @@ createApp({
             notify: true,
             currentIndex: 0,
             searchName: '',
+            userMex: '',
 
             contacts: [
                 {
@@ -171,24 +172,64 @@ createApp({
                     ],
                 }
             ],
+
+            answer: [
+                'Ciao, come stai?', 
+                'Birretta?', 
+                'So che stai guardando il mio stato.', 
+                'Daje, ci vediamo dopo', 'Scialla!',
+                'Odio quelle persone che rubano le mie idee prima che le abbia pensate...', 
+                'Se stai leggendo questo messaggio, vuol dire che non hai nulla da fare nella vita.', 
+                'Sono occupato ora!', 
+                ':)',
+            ],
         }
         
-    }, 
+    },
 
     methods: {
 
-        notifySwitch: function(){
+        notifySwitch(){
             this.notify = !this.notify
         },
 
-        getLastAccess: function(index) {  
+        getLastAccess(index) {  
             let lastMessage = this.contacts[index].messages.length -1;
             return this.contacts[index].messages[lastMessage].date;
         },
 
-        changeChat: function(index) {
+        changeChat(index) {
             this.currentIndex = index
         },
 
+        sendMessage() {
+            if (!this.userMex) return;
+            const d = new Date();
+            let newdate = d.toLocaleDateString('it-IT');
+            const SentMex = {
+                date: newdate,
+                message: this.userMex,
+                status: 'sent'
+            }
+            this.contacts[this.currentIndex].messages.push(SentMex);
+            this.userMex = '';
+
+            setTimeout(()=>{
+                const d = new Date();
+                let newdate = d.toLocaleDateString('it-IT');
+                let randomMex = Math.floor(Math.random()*this.answer.length);
+                const ReceivedMex = {
+                    date: newdate,
+                    message: this.answer[randomMex],
+                    status: 'received'
+                }
+                this.contacts[this.currentIndex].messages.push(ReceivedMex);
+             },1000);
+             
+            setTimeout(()=>{
+            let container = this.$el.querySelector(".chat-bg");
+            container.scrollTo(0, container.scrollHeight)
+        },1000);
+        },
     },
 }).mount('#app')
