@@ -8,6 +8,7 @@ createApp({
             currentIndex: 0,
             searchName: '',
             userMex: '',
+            box: null,
 
             contacts: [
                 {
@@ -231,5 +232,18 @@ createApp({
             container.scrollTo(0, container.scrollHeight)
         },1000);
         },
+
+        infoBox(index){
+            if(this.box === index){
+                this.box = false;
+            } else {
+                this.box = index;
+            }
+        },
+
+        deleteMex(index){
+            this.contacts[index].messages.splice(this.box, 1)
+            this.box = null;
+        }
     },
 }).mount('#app')

@@ -109,8 +109,13 @@
                         <div class="chat-message mx-5 my-3 py-2 px-3" :class="message.status">
                             <div class="d-flex justify-content-between">
                                 <div class="text-break">{{message.message}}</div>
+                                <i class="ps-4 icons fas fa-chevron-down" @click="infoBox(i)"></i>
                             </div>
-                            <div class="small-text-size text-end">{{message.date}}</div>                            
+                            <div class="small-text-size text-end">{{message.date}}</div>
+                            <div class="mod-box rounded" v-if="box === i">
+                                <div class="message-option py-2 px-4">Info Messaggio</div>
+                                <div class="message-option py-2 px-4" @click="deleteMex(currentIndex)">Elimina Messaggio</div>
+                            </div>
                         </div>
                     </div>
                 </section>

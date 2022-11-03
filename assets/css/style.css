@@ -111,9 +111,19 @@
     padding: 3px;
 }
 
+.input.search:focus{
+    border-bottom: 1px solid var(--highlight);
+}
+
 .input.message {
     width: 80%;
     padding: 10px;
+}
+
+.input.message:focus{
+    border: 2px solid var(--highlight);
+    box-shadow: inset 0px 0px 12px 3px rgba(65, 147, 136, 0.22)
+
 }
 
 /* main */
